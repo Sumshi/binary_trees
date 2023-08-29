@@ -35,22 +35,23 @@ size_t binary_tree_height(const binary_tree_t *tree)
 {/*height of binary tree = 1 + the number of edges*/
 	/*on the longest path from the root to the leaf*/
 
-	int left = 0;
-	int right = 0;
-
+	size_t left_height;
+	size_t right_height;
 
 	if (tree == NULL)
-	{
 		return (0);
-	}
-	left += 1 + binary_tree_height(tree->left);/*left height of tree*/
-	right += 1 + binary_tree_height(tree->right);/*left height of tree*/
-	if (left > right)
+
+	left_height = binary_tree_height(tree->left);
+	right_height = binary_tree_height(tree->right);
+
+	if (left_height > right_height)
 	{
-		return (left);
+		return (left_height + 1);
 	}
 	else
 	{
-		return (right);
+		return (right_height + 1);
 	}
 }
+/*if the difference is greater tahn 1 it is unbalanced*/
+/*if it less than 1 or equals to 1 it is balanced*/
