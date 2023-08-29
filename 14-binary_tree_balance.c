@@ -23,6 +23,9 @@ int binary_tree_balance(const binary_tree_t *tree)
 	right_subtree = binary_tree_height(tree->right);
 
 	return (left_subtree - right_subtree);
+
+	/*if the difference is greater tahn 1 it is unbalanced*/
+	/*if it less than 1 or equals to 1 it is balanced*/
 }
 
 /**
@@ -53,5 +56,4 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		return (right_height + 1);
 	}
 }
-/*if the difference is greater tahn 1 it is unbalanced*/
-/*if it less than 1 or equals to 1 it is balanced*/
+
