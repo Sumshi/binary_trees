@@ -6,7 +6,8 @@
  * @second:  is a pointer to the second node
  * Return:  NUll, if no common ancestor is found
  */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+		const binary_tree_t *second)
 {
 	size_t depth_first;/*gets depth of first  node*/
 	size_t depth_second;/*gets the depth of second node*/
