@@ -19,5 +19,5 @@ void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
 	}
 	binary_tree_postorder(tree->left, func);/*traverses left subtree*/
 	binary_tree_postorder(tree->right, func);/*traverses right subtree*/
-    func(tree->n);/*prints the value of current node*/
+	func(tree->n);/*prints the value of current node*/
 }
