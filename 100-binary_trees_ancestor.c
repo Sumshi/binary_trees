@@ -23,6 +23,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 	/*calculate the depth of the second node*/
 	depth_second = binary_tree_depth(second);
 
+/*adjust depth so that both are on the same level*/
 	while (depth_first > depth_second)
 	{
 		first = first->parent;
@@ -35,7 +36,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 		depth_second--;
 	}
 	while (first != second)
-	{
+	{/*move up the tree using parent pointers*/
 		first = first->parent;
 		second = second->parent;
 	}
