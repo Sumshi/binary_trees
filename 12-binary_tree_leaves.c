@@ -7,6 +7,9 @@
 
 size_t binary_tree_leaves(const binary_tree_t *tree)
 {
+	size_t left_leaves;
+	size_t right_leaves;
+
 	if (tree == NULL)
 	{
 		return (0);
@@ -17,10 +20,10 @@ size_t binary_tree_leaves(const binary_tree_t *tree)
 		return (1);/*it is a leaf node*/
 	}
 	/*get the leaves of left subtree*/
-	size_t left_leaves = binary_tree_leaves(tree->left);
+	left_leaves = binary_tree_leaves(tree->left);
 
 	/*get the leaves of right subtree*/
-	size_t right_leaves = binary_tree_leaves(tree->right);
+	right_leaves = binary_tree_leaves(tree->right);
 
 	return (left_leaves + right_leaves);
 }
