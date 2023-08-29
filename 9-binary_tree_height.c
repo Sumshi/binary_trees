@@ -10,20 +10,31 @@ size_t binary_tree_height(const binary_tree_t *tree)
 {/*height of binary tree = 1 + the number of edges*/
 	/*on the longest path from the root to the leaf*/
 
+	int left = 0;
+	int right = 0;
+
+
 	if (tree == NULL)
 	{
 		return (0);
 	}
 
-	int left = binary_tree_height(tree->left);/*left height of tree*/
-	int right = binary_tree_height(tree->right);/*right height of tree*/
+	if (tree->left)
+	{
+		left += 1 + binary_tree_height(tree->left);/*left height of tree*/
 
+	}
+	if (tree->right)
+	{
+		right += 1 + binary_tree_height(tree->right);/*left height of tree*/
+
+	}
 	if (left > right)
 	{
-		return (left + 1);
+		return (left);
 	}
 	else
 	{
-		return (right + 1);
+		return (right);
 	}
 }
