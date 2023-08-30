@@ -6,6 +6,10 @@
  */
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
+	/*new root of subtree is assigned to right child*/
+	binary_tree_t *new_root = tree->right;
+
+
 	if (tree == NULL)
 	{
 		return (tree);
@@ -15,11 +19,7 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 	{
 		return (tree);/*returns the original tree*/
 	}
-	/*new root of subtree is assigned to right child*/
-	binary_tree_t *new_root = tree->right;
-
 	tree->right = new_root->left;
-
 	if (new_root->left != NULL)
 	{
 		new_root->left->parent = tree;
@@ -27,6 +27,5 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 	new_root->parent = tree->parent;
 	tree->parent = new_root;
 	new_root->left = tree;
-
 	return (new_root);
 }
