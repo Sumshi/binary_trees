@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stddef.h>
 #include "binary_trees.h"
 /**
  * binary_tree_postorder - goes through a binary tree using postorder traversal
@@ -8,7 +6,7 @@
  * Return: 1 if node is a root, otherwise 0
  */
 void binary_tree_postorder(const binary_tree_t *tree, void (*func)(int))
-{/*inoder traversal = left->right->root*/
+{/*postorder traversal = left->right->root*/
 	if (tree == NULL)
 	{
 		return;
