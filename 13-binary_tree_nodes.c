@@ -15,15 +15,13 @@ size_t binary_tree_nodes(const binary_tree_t *tree)
 	if (tree->left != NULL || tree->right != NULL)/*has a child*/
 	{
 		size_t left_node = binary_tree_nodes(tree->left);
+
 		size_t right_node = binary_tree_nodes(tree->right);
-		size_t total_nodes;
 
-		total_nodes = left_node + right_node + 1;
-		return (total_nodes);
-
+		return (left_node + right_node + 1);
 	}
 	else/*node has no child , it is a leaf node*/
 	{
 		return (0);
-	}
+		i	}
 }
