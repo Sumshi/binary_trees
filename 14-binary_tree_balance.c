@@ -1,13 +1,15 @@
 #include "binary_trees.h"
 /**
  * binary_tree_balance - measures the balance factor of a binary tree
+ * balance factor = height of left - height of right
+ * if the difference is greater than 1 it is unbalanced
+ * if it less than 1 or equals to 1 it is balanced
  * @tree:  is a pointer to the node to measure
  * Return: 0 if tree is null
  */
 
 int binary_tree_balance(const binary_tree_t *tree)
 {
-	/*balance factor = height of left - height of right*/
 	int left_subtree;
 	int right_subtree;
 
@@ -23,9 +25,6 @@ int binary_tree_balance(const binary_tree_t *tree)
 	right_subtree = binary_tree_height(tree->right);
 
 	return (left_subtree - right_subtree);
-
-	/*if the difference is greater tahn 1 it is unbalanced*/
-	/*if it less than 1 or equals to 1 it is balanced*/
 }
 
 /**
@@ -33,10 +32,11 @@ int binary_tree_balance(const binary_tree_t *tree)
  * or the maximum depth of a binary tree
  * @tree:  is a pointer to the root node of the tree
  * Return: 0 if the tree is null
+ * height of binary tree = 1 + the number of edges
+ * on the longest path from the root to the leaf
  */
 size_t binary_tree_height(const binary_tree_t *tree)
-{/*height of binary tree = 1 + the number of edges*/
-	/*on the longest path from the root to the leaf*/
+{
 
 	size_t left_height;
 	size_t right_height;
@@ -56,4 +56,3 @@ size_t binary_tree_height(const binary_tree_t *tree)
 		return (right_height + 1);
 	}
 }
-
