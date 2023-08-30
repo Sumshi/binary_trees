@@ -7,17 +7,17 @@
 
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
+	/*depth = number of edges that need to be traversed to reach the root node*/
 	size_t depth = 0;/*depth is initially 0*/
 
 	if (tree == NULL)
 	{
 		return (0);
 	}
-	/*depth = number of edges that need to be traversed to reach the root node*/
 	while (tree != NULL && tree->parent != NULL)
 	{
 		depth++;
-		tree = tree->parent;/*updates pointer to point to next node*/
+		tree = tree->parent;/*updates pointer to point to its parent node*/
 	}
 	return (depth);
 }
