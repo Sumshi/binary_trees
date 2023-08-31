@@ -1,16 +1,14 @@
 #include "binary_trees.h"
 #include <limits.h>
-
 /**
- * is_valid_BST - perform inorder travesal
+ * is_valid_BST - perform inorder travesal of binary tree
  * @node: pointer to the node
  * @prev: pointer to the int holding traversed value
  * Return: 1 || 0
  */
-
 int is_valid_BST(const binary_tree_t *node, int *prev)
 {
-	if (node == NULL)
+	if (node == NULL)/*tree is empty*/
 		return (1);
 
 	if (!is_valid_BST(node->left, prev))
