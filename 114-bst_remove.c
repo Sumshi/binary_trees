@@ -6,9 +6,12 @@
  */
 bst_t *bst_find_min(bst_t *root)
 {
-	while (root && root->left)
-		root = root->left;
-	return (root);
+	if (node == NULL)
+		return (NULL);
+
+	while (node->left != NULL)
+		node = node->left;
+	return (node);
 }
 
 /**
@@ -19,7 +22,7 @@ bst_t *bst_find_min(bst_t *root)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-	bst_t *min_right, *temp;
+	bst_t *temp;
 
 	if (root == NULL)
 		return (NULL);
@@ -30,7 +33,6 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->right = bst_remove(root->right, value);
 	else
 	{
-		/* Node with only one child or no child */
 		if (root->left == NULL)
 		{
 			temp = root->right;
@@ -44,10 +46,10 @@ bst_t *bst_remove(bst_t *root, int value)
 			return (temp);
 		}
 
-		/* Node with two children: get the (smallest in the right subtree) */
-		min_right = bst_find_min(root->right);
-		root->n = min_right->n;
-		root->right = bst_remove(root->right, min_right->n);
+		temp = bst_find_min(root->right);
+		root->n = temp->n;
+
+		root->right = bst_remove(root->right, temp->n);
 	}
 	return (root);
 }
