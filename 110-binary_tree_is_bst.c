@@ -6,26 +6,22 @@
  * Return: 1 if tree is valid otherwise 0
  */
 int binary_tree_is_bst(const binary_tree_t *tree)
-{
-	return (is_bst_helper(tree, NULL, NULL));
-}
+{/*using inorder traversal, store result in array*/
+	/*if the array is sorted in ascending order then = bst*/
 
-/**
- * is_bst_helper - recursive helper function to check if a tree is a valid BST
- * @tree: pointer to the current node being checked
- * @min: pointer to the minimum valid value for the current node
- * @max: pointer to the maximum valid value for the current node
- * Return: 1 if tree is a valid BST, 0 otherwise
- */
-int is_bst_helper(const binary_tree_t *tree,
-		const binary_tree_t *min, const binary_tree_t *max)
-{
-	if (tree == NULL)
-		return (1);
+	const binary_tree_t *prev = NULL;
 
-	if ((min && tree->n <= min->n) || (max && tree->n >= max->n))
-		return (0);
 
-	return (is_bst_helper(tree->left, min, tree)
-			&& is_bst_helper(tree->right, tree, max));
+	/*traverse the tree in inorder fashion*/
+	if (tree)
+	{
+		if (!binary_tree_is_bst(tree->left))
+			return (0);
+		if (prev != NULL && tree->n <= prev->n)
+			return (0);
+
+		prev = tree;
+		return (binary_tree_is_bst(tree->right));
+	}
+	return (1);
 }
