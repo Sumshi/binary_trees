@@ -1,31 +1,42 @@
 #include "binary_trees.h"
+#include <limits.h>
+
 /**
- * binary_tree_is_bst - checks if a binary tree is a valid
- * checks if a tree is a binary search tree or not
- * @tree:  is a pointer to the root node of the tree to check
- * Return: 1 if tree is valid otherwise 0
+ * is_valid_BST - perform inorder travesal
+ * @node: pointer to the node
+ * @prev: pointer to the int holding traversed value
+ * Return: 1 || 0
  */
-int binary_tree_is_bst(const binary_tree_t *tree)
+
+int is_valid_BST(const binary_tree_t *node, int *prev)
 {
-	return (is_bst_helper(tree, NULL, NULL));
+	if (node == NULL)
+		return (1);
+
+	if (!is_valid_BST(node->left, prev))
+		return (0);
+
+	if (*prev >= node->n)
+		return (0);
+
+	*prev = node->n;
+
+	return (is_valid_BST(node->right, prev));
 }
 
 /**
- * is_bst_helper - recursive helper function to check if a tree is a valid BST
- * @tree: pointer to the current node being checked
- * @min: pointer to the minimum valid value for the current node
- * @max: pointer to the maximum valid value for the current node
- * Return: 1 if tree is a valid BST, 0 otherwise
+ * binary_tree_is_bst - checks if a binary tree is a BST
+ * @tree: pointer to the root node
+ * Return: 1 if valid || 0 if not || 0 if tree is NULL
  */
-int is_bst_helper(const binary_tree_t *tree,
-		const binary_tree_t *min, const binary_tree_t *max)
-{
-	if (tree == NULL)/*is an empty tree hence = bst*/
-		return (1);
 
-	if ((min && tree->n <= min->n) || (max && tree->n >= max->n))
+int binary_tree_is_bst(const binary_tree_t *tree)
+{
+	int prev = INT_MIN;
+
+	if (tree == NULL)
 		return (0);
 
-	return (is_bst_helper(tree->left, min, tree)
-			&& is_bst_helper(tree->right, tree, max));
+
+	return (is_valid_BST(tree, &prev));
 }
